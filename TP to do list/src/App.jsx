@@ -6,22 +6,23 @@ import { TaskContext } from './contexts/TaskContext';
 import TaskDisplay from './components/TaskDiplay';
 
 
+
 function App() {
   const [tasks, setTasks] = useState([])
   console.table(tasks);
 
   return (
+  <TaskContext.Provider value={{tasks, setTasks}}>
     <div className="container mt-5">
       <div className="App">
-      <TaskContext.Provider value={{tasks, setTasks}}>
         <ToDoList />
         <h2>Todo</h2>
         {tasks.map(task => (
         <TaskDisplay key={task.id} taskId={task.id}/>
         ))}
-        </TaskContext.Provider>
       </div>
     </div>
+    </TaskContext.Provider>
   );
 }
 
